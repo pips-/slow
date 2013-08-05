@@ -4,17 +4,17 @@
 #include <unistd.h>
 
 int main(int argc, char *argv[]) {
-	char		line[1024];
-	int		linesize = sizeof(line);
-	int		useconds = 1000000;
+	char		buffer;
+	size_t		nread;
+	useconds_t	useconds = 1000000; // default 1 second
 
 	if (argc == 2) {
 		useconds = atoi(argv[1]);
 	}
 
-	while(fgets(line, linesize, stdin)) {
+	while((nread = fread(&buffer, 1, sizeof buffer, stdin)) > 0) {
 		usleep(useconds);
-		fputs(line, stdout);
+		fwrite(&buffer, 1, nread, stdout);
 	}
 
 	return 0;
