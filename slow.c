@@ -3,14 +3,19 @@
 #include <stdio.h>
 #include <unistd.h>
 
+#include "arg.h"
+
+char *argv0;
+
 int main(int argc, char *argv[]) {
 	char		buffer;
 	size_t		nread;
-	useconds_t	useconds = 1000000; // default 1 second
+	useconds_t	useconds	= 1000000; // default 1 second
 
-	if (argc == 2) {
-		useconds = atoi(argv[1]);
-	}
+	ARGBEGIN {
+	case 't':
+		useconds = atoi(ARGF());
+	} ARGEND;
 
 	while((nread = fread(&buffer, 1, sizeof buffer, stdin)) > 0) {
 		usleep(useconds);
