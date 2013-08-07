@@ -7,6 +7,11 @@
 
 char *argv0;
 
+void usage() {
+	printf("usage: %s [-t usec]\n", argv0);
+	exit(EXIT_FAILURE);
+}
+
 int main(int argc, char *argv[]) {
 	char		buffer;
 	size_t		nread;
@@ -14,7 +19,10 @@ int main(int argc, char *argv[]) {
 
 	ARGBEGIN {
 	case 't':
-		useconds = atoi(ARGF());
+		useconds = atoi(EARGF(usage()));
+		break;
+	default:
+		usage();
 	} ARGEND;
 
 	while((nread = fread(&buffer, 1, sizeof buffer, stdin)) > 0) {
