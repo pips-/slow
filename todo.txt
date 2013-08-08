@@ -1,4 +1,4 @@
 - [x] Add forced flush option. -f ? -F ?
 - [ ] Write man page
-- [ ] Send errors to sderr
+- [x] Send errors to sderr
 - [ ] Release v1

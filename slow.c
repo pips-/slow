@@ -31,10 +31,17 @@ int main(int argc, char *argv[]) {
 
 	while((nread = fread(&buffer, 1, sizeof buffer, stdin)) > 0) {
 		usleep(useconds);
-		fwrite(&buffer, 1, nread, stdout);
+		if(fwrite(&buffer, 1, nread, stdout) != nread) {
+			fprintf(stderr, "stdout: write error");
+			exit(EXIT_FAILURE);
+		}
 		if(flush) {
 			fflush(stdout);
 		}
+	}
+	if(ferror(stdin)) {
+		fprintf(stderr, "stdin: read error");
+		exit(EXIT_FAILURE);
 	}
 
 	return EXIT_SUCCESS;
