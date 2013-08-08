@@ -8,7 +8,7 @@
 char *argv0;
 
 void usage() {
-	printf("usage: %s [-t usec] [-F]\n", argv0);
+	fprintf(stderr, "usage: %s [-t usec] [-F]\n", argv0);
 	exit(EXIT_FAILURE);
 }
 
