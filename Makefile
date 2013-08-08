@@ -31,7 +31,7 @@ clean:
 dist: clean
 	@echo creating dist tarball
 	@mkdir -p slow-${VERSION}
-	@cp -R LICENSE Makefile config.mk ${SRC} slow-${VERSION}
+	@cp -R LICENSE Makefile config.mk ${SRC} slow.1 slow-${VERSION}
 	@tar -cf slow-${VERSION}.tar slow-${VERSION}
 	@gzip slow-${VERSION}.tar
 	@rm -rf slow-${VERSION}

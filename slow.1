@@ -1,0 +1,21 @@
+.TH slow 1 slow\-VERSION
+.SH NAME
+slow \- Slow down ouput
+.SH SYNOPSIS
+.B slow
+.RB [ \-t
+.IR time ]
+.RB [ \-F ]
+.SH DESCRIPTION
+.B slow
+cat stdin to stdout with a usleep between each bytes.
+.SH OPTIONS
+.TP
+.BI \-t " time"
+specify sleep time between each bytes in micro-second.
+Default value is 1 second.
+.TP
+.B \-F
+force flushing after each bytes.
+useful with buffered stdout like ttys.
+.TP
