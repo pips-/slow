@@ -1,5 +1,5 @@
 # slow version
-VERSION = 0.1
+VERSION = 1.0
 
 # Customize below to fit your system
 
