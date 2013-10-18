@@ -8,7 +8,7 @@
 char *argv0;
 
 void usage() {
-	fprintf(stderr, "usage: %s [-t usec] [-F]\n", argv0);
+	fprintf(stderr, "usage: %s [-t usec] [-f]\n", argv0);
 	exit(EXIT_FAILURE);
 }
 
@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
 	case 't':
 		useconds = atoi(EARGF(usage()));
 		break;
-	case 'F':
+	case 'f':
 		flush = 1;
 		break;
 	default:

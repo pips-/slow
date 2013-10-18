@@ -5,7 +5,7 @@ slow \- Slow down ouput
 .B slow
 .RB [ \-t
 .IR time ]
-.RB [ \-F ]
+.RB [ \-f ]
 .SH DESCRIPTION
 .B slow
 cat stdin to stdout with a usleep between each bytes.
@@ -15,7 +15,7 @@ cat stdin to stdout with a usleep between each bytes.
 specify sleep time between each bytes in micro-second.
 Default value is 1 second.
 .TP
-.B \-F
+.B \-f
 force flushing after each bytes.
 useful with buffered stdout like ttys.
 .TP
