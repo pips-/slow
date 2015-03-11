@@ -13,10 +13,10 @@ void usage() {
 }
 
 int main(int argc, char *argv[]) {
-	char		buffer;
-	size_t		nread;
-	useconds_t	useconds	= 1000000; // default 1 second
-	unsigned int	flush		= 0;
+	char            buffer;
+	size_t          nread;
+	useconds_t      useconds        = 1000000; // default 1 second
+	unsigned int    flush           = 0;
 
 	ARGBEGIN {
 	case 't':
@@ -29,17 +29,17 @@ int main(int argc, char *argv[]) {
 		usage();
 	} ARGEND;
 
-	while((nread = fread(&buffer, 1, sizeof buffer, stdin)) > 0) {
+	while ((nread = fread(&buffer, 1, sizeof buffer, stdin)) > 0) {
 		usleep(useconds);
-		if(fwrite(&buffer, 1, nread, stdout) != nread) {
+		if (fwrite(&buffer, 1, nread, stdout) != nread) {
 			fprintf(stderr, "stdout: write error");
 			exit(EXIT_FAILURE);
 		}
-		if(flush) {
+		if (flush) {
 			fflush(stdout);
 		}
 	}
-	if(ferror(stdin)) {
+	if (ferror(stdin)) {
 		fprintf(stderr, "stdin: read error");
 		exit(EXIT_FAILURE);
 	}
