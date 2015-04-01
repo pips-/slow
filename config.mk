@@ -13,7 +13,7 @@ LIBS =
 # flags
 CPPFLAGS = -DVERSION=\"${VERSION}\" -D_XOPEN_SOURCE=500
 CFLAGS = -std=c99 -pedantic -Wall -Os ${INCS} ${CPPFLAGS}
-LDFLAGS = -s ${LIBS}
+LDFLAGS = -static -s ${LIBS}
 
 # compiler and linker
 CC = cc
