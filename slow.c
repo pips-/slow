@@ -6,12 +6,18 @@
 
 char *argv0;
 
-void usage() {
+static void usage(void);
+
+void
+usage()
+{
 	fprintf(stderr, "usage: %s [-t usec] [-f]\n", argv0);
 	exit(1);
 }
 
-int main(int argc, char *argv[]) {
+int
+main(int argc, char *argv[])
+{
 	char            buffer;
 	size_t          nread;
 	useconds_t      useconds        = 1000000; // default 1 second
@@ -30,14 +36,16 @@ int main(int argc, char *argv[]) {
 
 	while ((nread = fread(&buffer, 1, sizeof buffer, stdin)) > 0) {
 		usleep(useconds);
+
 		if (fwrite(&buffer, 1, nread, stdout) != nread) {
 			fprintf(stderr, "stdout: write error");
 			exit(1);
 		}
-		if (flush) {
+
+		if (flush)
 			fflush(stdout);
-		}
 	}
+
 	if (ferror(stdin)) {
 		fprintf(stderr, "stdin: read error");
 		exit(1);
