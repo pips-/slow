@@ -8,7 +8,7 @@ char *argv0;
 
 void usage() {
 	fprintf(stderr, "usage: %s [-t usec] [-f]\n", argv0);
-	exit(EXIT_FAILURE);
+	exit(1);
 }
 
 int main(int argc, char *argv[]) {
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 		usleep(useconds);
 		if (fwrite(&buffer, 1, nread, stdout) != nread) {
 			fprintf(stderr, "stdout: write error");
-			exit(EXIT_FAILURE);
+			exit(1);
 		}
 		if (flush) {
 			fflush(stdout);
@@ -40,8 +40,8 @@ int main(int argc, char *argv[]) {
 	}
 	if (ferror(stdin)) {
 		fprintf(stderr, "stdin: read error");
-		exit(EXIT_FAILURE);
+		exit(1);
 	}
 
-	return EXIT_SUCCESS;
+	return 0;
 }
